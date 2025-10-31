@@ -10,11 +10,12 @@
   --font-sans: "Inter", sans-serif;
 
   /* 渐变色变量 */
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-primary: linear-gradient(135deg, #8b9dff 0%, #a78bfa 100%);
   --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-cool: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-cool: linear-gradient(135deg, #60c5ff 0%, #3dd5ff 100%);
   --gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
   --gradient-bg: linear-gradient(to bottom, #111827 0%, #1a1f35 100%);
+  --gradient-tag: linear-gradient(135deg, #334155 0%, #1e293b 100%);
 }
 
 /* BASE & RESET */
@@ -261,36 +262,12 @@ h6 {
   flex-direction: column;
   position: relative;
 
-  /* 渐变边框效果 */
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 0.5rem;
-    padding: 1px;
-    background: var(--gradient-cool);
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
-
-    &::before {
-      opacity: 1;
-    }
+    border-color: rgba(96, 197, 255, 0.5);
+    box-shadow:
+      0 12px 30px rgba(96, 197, 255, 0.3),
+      0 0 40px rgba(96, 197, 255, 0.15);
   }
 }
 
@@ -356,19 +333,26 @@ h6 {
 }
 
 .tag {
-  background: var(--gradient-cool);
-  color: white;
+  background: linear-gradient(135deg, #475569 0%, #334155 100%);
+  color: #93c5fd;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 600;
-  border: none;
-  box-shadow: 0 2px 4px rgba(79, 172, 254, 0.3);
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(147, 197, 253, 0.1);
   transition: all 0.2s ease;
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(79, 172, 254, 0.4);
+    border-color: #60a5fa;
+    color: #60c5ff;
+    background: linear-gradient(135deg, #4a5a6f 0%, #374151 100%);
+    box-shadow:
+      0 4px 8px rgba(96, 197, 255, 0.3),
+      inset 0 1px 0 rgba(147, 197, 253, 0.2);
   }
 }
 
@@ -580,6 +564,27 @@ h6 {
   font-size: 1.125rem;
 }
 
+.github-profile-link {
+  display: inline-flex;
+  align-items: center;
+  color: #60c5ff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  svg {
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    color: #93c5fd;
+
+    svg {
+      transform: scale(1.1);
+    }
+  }
+}
+
 .about-page__skills h2 {
   font-size: 1.75rem;
   margin-bottom: 1rem;
@@ -665,6 +670,16 @@ h6 {
 .contact-page__subtitle {
   color: var(--color-text-secondary);
   font-size: 1.125rem;
+
+  a {
+    color: #60c5ff;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #93c5fd;
+    }
+  }
 }
 
 .form__group {

@@ -1,73 +1,94 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>17726's blog | 掌握CSS Grid布局</title>
-    <meta name="description" content="超越Flexbox，利用CSS Grid解锁二维布局的强大功能。" />
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+    <meta
+      name="description"
+      content="超越Flexbox，利用CSS Grid解锁二维布局的强大功能。"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header class="header">
-        <div class="container header__container">
-            <a href="../index.html" class="header__brand">17726's blog</a>
-            <nav class="header__nav">
-                <ul class="header__nav-list">
-                    <li><a href="../index.html" class="header__nav-link">首页</a></li>
-                    <li><a href="../about.html" class="header__nav-link">关于</a></li>
-                    <li><a href="../contact.html" class="header__nav-link">联系</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="container header__container">
+        <a href="../index.html" class="header__brand">17726's blog</a>
+        <nav class="header__nav">
+          <ul class="header__nav-list">
+            <li><a href="../index.html" class="header__nav-link">首页</a></li>
+            <li><a href="../about.html" class="header__nav-link">关于</a></li>
+            <li><a href="../contact.html" class="header__nav-link">留言</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main class="main-content">
-        <div class="container">
-            <article class="post">
-                <header class="post__header">
-                    <div class="post__tags">
-                        <span class="tag">CSS</span>
-                        <span class="tag">前端</span>
-                        <span class="tag">网页设计</span>
-                    </div>
-                    <h1 class="post__title">掌握用于现代网页设计的CSS Grid布局</h1>
-                    <div class="post__meta">
-                        <span>作者：17726</span>
-                        <span class="post__meta-separator">&middot;</span>
-                        <time datetime="2025-07-18">2025-07-18</time>
-                    </div>
-                </header>
-                
-                <img src="https://placehold.co/1200x600/111827/0a7fff?text=CSS+Grid" alt="掌握CSS Grid布局" class="post__image" />
+      <div class="container">
+        <article class="post">
+          <header class="post__header">
+            <div class="post__tags">
+              <span class="tag">CSS</span>
+              <span class="tag">前端</span>
+              <span class="tag">网页设计</span>
+            </div>
+            <h1 class="post__title">掌握用于现代网页设计的CSS Grid布局</h1>
+            <div class="post__meta">
+              <span>作者：17726</span>
+              <span class="post__meta-separator">&middot;</span>
+              <time datetime="2025-07-18">2025-07-18</time>
+            </div>
+          </header>
 
-                <div class="post__content">
-                    <p>CSS Grid布局是一个强大的工具，可以轻松创建复杂、响应式的网页布局。与主要用于一维布局的Flexbox不同，Grid擅长于二维排列。</p>
-                    <h2>基本概念</h2>
-                    <p>CSS Grid的核心是容器（设置了 <code>display: grid</code> 的元素）和项目（容器的子元素）。您在容器上定义列和行，然后可以将项目放置在此网格中。</p>
-                    <pre><code class="language-css">
+          <img
+            src="https://placehold.co/1200x600/111827/0a7fff?text=CSS+Grid"
+            alt="掌握CSS Grid布局"
+            class="post__image"
+          />
+
+          <div class="post__content">
+            <p>
+              CSS
+              Grid布局是一个强大的工具，可以轻松创建复杂、响应式的网页布局。与主要用于一维布局的Flexbox不同，Grid擅长于二维排列。
+            </p>
+            <h2>基本概念</h2>
+            <p>
+              CSS Grid的核心是容器（设置了
+              <code>display: grid</code>
+              的元素）和项目（容器的子元素）。您在容器上定义列和行，然后可以将项目放置在此网格中。
+            </p>
+            <pre><code class="language-css">
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
                     </code></pre>
-                    <p>这个简单的示例创建了一个三列等宽的网格，并在它们之间设置了间隙。从这里开始，可能性是无穷的。</p>
-                </div>
+            <p>
+              这个简单的示例创建了一个三列等宽的网格，并在它们之间设置了间隙。从这里开始，可能性是无穷的。
+            </p>
+          </div>
 
-                <footer class="post__footer">
-                    <a href="../index.html" class="post__back-link">&larr; 返回所有文章</a>
-                </footer>
-            </article>
-        </div>
+          <footer class="post__footer">
+            <a href="../index.html" class="post__back-link"
+              >&larr; 返回所有文章</a
+            >
+          </footer>
+        </article>
+      </div>
     </main>
 
     <footer class="footer">
-        <div class="container footer__container">
-            <p class="footer__copyright">&copy; 2025 17726's blog. 版权所有.</p>
-        </div>
+      <div class="container footer__container">
+        <p class="footer__copyright">&copy; 2025 17726's blog. 版权所有.</p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
