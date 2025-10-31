@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17726's blog | 保护前端API密钥</title>
+    <meta name="description" content="在客户端代码中暴露API密钥是一项重大的安全风险。学习保护您的密钥和应用程序的策略。" />
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="/" class="header__brand">17726's blog</a>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li><a href="/" class="header__nav-link">首页</a></li>
+                    <li><a href="../about.html" class="header__nav-link">关于</a></li>
+                    <li><a href="../contact.html" class="header__nav-link">联系</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post__header">
+                    <div class="post__tags">
+                        <span class="tag">安全</span>
+                        <span class="tag">API</span>
+                        <span class="tag">最佳实践</span>
+                    </div>
+                    <h1 class="post__title">保护前端API密钥的最佳实践</h1>
+                    <div class="post__meta">
+                        <span>作者：17726</span>
+                        <span class="post__meta-separator">&middot;</span>
+                        <time datetime="2025-07-15">2025-07-15</time>
+                    </div>
+                </header>
+                
+                <img src="https://placehold.co/1200x600/111827/0a7fff?text=API+Keys" alt="保护前端API密钥" class="post__image" />
+
+                <div class="post__content">
+                    <p>对于新开发人员来说，最常见的问题之一是：“我应该在哪里存储前端项目的API密钥？” 简短的答案是：你不应该这样做。</p>
+                    <h2>客户端密钥的问题</h2>
+                    <p>在用户浏览器中运行的任何代码对他们都是可见的。这意味着如果您在JavaScript包中嵌入API密钥，恶意行为者可以轻松找到并滥用它，可能会产生巨额账单或泄露数据。</p>
+                    <h2>解决方案：后端代理</h2>
+                    <p>标准的最佳实践是创建一个简单的后端服务（代理或无服务器函数）来持有API密钥。您的前端应用程序向您的后端发出请求，然后您的后端使用密钥安全地向第三方API发出请求。这样，密钥就永远不会暴露给客户端。</p>
+                </div>
+
+                <footer class="post__footer">
+                    <a href="/" class="post__back-link">&larr; 返回所有文章</a>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <p class="footer__copyright">&copy; 2025 17726's blog. 版权所有.</p>
+        </div>
+    </footer>
+</body>
+</html>

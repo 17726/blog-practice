@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17726's blog | 理解Vue应用中的跨站脚本（XSS）</title>
+    <meta
+      name="description"
+      content="深入探讨XSS攻击以及Vue的架构如何帮助缓解这些攻击。"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__container">
+        <a href="/" class="header__brand">17726's blog</a>
+        <nav class="header__nav">
+          <ul class="header__nav-list">
+            <li><a href="/" class="header__nav-link">首页</a></li>
+            <li><a href="../about.html" class="header__nav-link">关于</a></li>
+            <li><a href="../contact.html" class="header__nav-link">联系</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container">
+        <article class="post">
+          <header class="post__header">
+            <div class="post__tags">
+              <span class="tag">Vue</span>
+              <span class="tag">安全</span>
+              <span class="tag">XSS</span>
+            </div>
+            <h1 class="post__title">理解Vue应用中的跨站脚本（XSS）</h1>
+            <div class="post__meta">
+              <span>作者：17726</span>
+              <span class="post__meta-separator">&middot;</span>
+              <time datetime="2025-07-21">2025-07-21</time>
+            </div>
+          </header>
+
+          <img
+            src="https://placehold.co/1200x600/111827/0a7fff?text=Security"
+            alt="理解Vue应用中的跨站脚本（XSS）"
+            class="post__image"
+          />
+
+          <div class="post__content">
+            <p>
+              跨站脚本（XSS）仍然是最常见的Web安全漏洞之一。在这篇文章中，我们将探讨什么是XSS，它如何影响Vue应用程序，以及内置的机制和最佳实践如何帮助开发人员编写安全的代码。
+            </p>
+            <h2>什么是XSS？</h2>
+            <p>
+              XSS攻击是一种注入类型，恶意脚本被注入到原本良性且受信任的网站中。攻击者可以使用XSS向最终用户发送恶意脚本。
+            </p>
+            <h2>Vue的防御机制</h2>
+            <p>
+              默认情况下，Vue会对模板中的动态数据（无论是使用Mustache插值
+              <code>{{...}}</code> 还是
+              <code>v-text</code
+              >）进行HTML转义。因此，它可以防止大多数XSS攻击。在使用
+              <code>v-html</code>
+              指令时应格外小心，因为它会按原样输出HTML，如果内容未经审查，可能会使您的应用程序面临风险。
+            </p>
+            <pre><code class="language-html">
+&lt;!-- 这是安全的，因为Vue会对content进行转义 --&gt;
+&lt;div&gt;{{ content }}&lt;/div&gt;
+
+&lt;!-- 这可能是不安全的，只在信任内容时使用 --&gt;
+&lt;div v-html="rawHtmlContent"&gt;&lt;/div&gt;
+                    </code></pre>
+          </div>
+
+          <footer class="post__footer">
+            <a href="/" class="post__back-link">&larr; 返回所有文章</a>
+          </footer>
+        </article>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__container">
+        <p class="footer__copyright">&copy; 2025 17726's blog. 版权所有.</p>
+      </div>
+    </footer>
+  </body>
+</html>
