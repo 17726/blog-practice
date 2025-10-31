@@ -43,10 +43,9 @@ a {
   color: var(--color-primary);
   text-decoration: none;
   transition: color 0.2s ease-in-out;
-}
-
-a:hover {
-  color: var(--color-primary-hover);
+  &:hover {
+    color: var(--color-primary-hover);
+  }
 }
 
 img {
@@ -67,7 +66,7 @@ h6 {
 
 /* LAYOUT */
 .container {
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -152,6 +151,7 @@ h6 {
 
 @media (min-width: 1024px) {
   .post-grid__container {
+    max-width:1200px;
     grid-template-columns: repeat(3, 1fr);
   }
 }
