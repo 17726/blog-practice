@@ -1,26 +1,7 @@
 @charset "UTF-8";
 /* VARIABLES */
 :root {
-  /* 深色主题变量 */
-  --color-background: #111827;
-  --color-surface: #1f2937;
-  --color-border: #374151;
-  --color-primary: #0a7fff;
-  --color-primary-hover: #3b82f6;
-  --color-text-primary: #f3f4f6;
-  --color-text-secondary: #9ca3af;
-  --font-sans: "Inter", sans-serif;
-  /* 渐变色变量 */
-  --gradient-primary: linear-gradient(135deg, #8b9dff 0%, #a78bfa 50%, #8b9dff 100%);
-  --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-cool: linear-gradient(135deg, #60c5ff 0%, #3dd5ff 50%, #60c5ff 100%);
-  --gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  --gradient-bg: linear-gradient(to bottom, #111827 0%, #1a1f35 100%);
-  --gradient-tag: linear-gradient(135deg, #334155 0%, #1e293b 100%);
-}
-
-/* 科技蓝调风 - 亮色主题 */
-.light-theme {
+  /* 科技蓝调风 - 亮色主题（默认） */
   --color-background: #e1e8ed;
   --color-surface: #ffffff;
   --color-border: #cbd5e1;
@@ -28,6 +9,7 @@
   --color-primary-hover: #1557b0;
   --color-text-primary: #1e3a5f;
   --color-text-secondary: #475569;
+  --font-sans: "Inter", sans-serif;
   /* 亮色主题渐变 */
   --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #3b82f6 100%);
   --gradient-accent: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
@@ -35,6 +17,24 @@
   --gradient-warm: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
   --gradient-bg: linear-gradient(to bottom, #f0f4f8 0%, #e1e8ed 100%);
   --gradient-tag: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+}
+
+/* 深色主题 */
+.dark-theme {
+  --color-background: #111827;
+  --color-surface: #1f2937;
+  --color-border: #374151;
+  --color-primary: #0a7fff;
+  --color-primary-hover: #3b82f6;
+  --color-text-primary: #f3f4f6;
+  --color-text-secondary: #9ca3af;
+  /* 深色主题渐变 */
+  --gradient-primary: linear-gradient(135deg, #8b9dff 0%, #a78bfa 50%, #8b9dff 100%);
+  --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-cool: linear-gradient(135deg, #60c5ff 0%, #3dd5ff 50%, #60c5ff 100%);
+  --gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --gradient-bg: linear-gradient(to bottom, #111827 0%, #1a1f35 100%);
+  --gradient-tag: linear-gradient(135deg, #334155 0%, #1e293b 100%);
 }
 
 /* BASE & RESET */
@@ -102,7 +102,7 @@ h6 {
 .header {
   padding: 1rem 0;
   border-bottom: 1px solid var(--color-border);
-  background: rgba(17, 24, 39, 0.8);
+  background: var(--color-surface);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   position: sticky;
@@ -210,14 +210,14 @@ h6 {
   transform: rotate(0deg) scale(1);
 }
 
-/* 亮色主题时切换图标 */
-.light-theme .theme-toggle__icon--sun {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
-.light-theme .theme-toggle__icon--moon {
+/* 深色主题时切换图标 */
+.dark-theme .theme-toggle__icon--sun {
   opacity: 0;
   transform: rotate(90deg) scale(0);
+}
+.dark-theme .theme-toggle__icon--moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }
 
 /* HERO */
@@ -408,22 +408,20 @@ h6 {
 }
 
 .tag {
-  background: linear-gradient(135deg, #475569 0%, #334155 100%);
-  color: #93c5fd;
+  background: var(--gradient-tag);
+  color: var(--color-primary);
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 600;
-  border: 1px solid rgba(147, 197, 253, 0.3);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(147, 197, 253, 0.1);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
 }
 .tag:hover {
   transform: scale(1.05);
-  border-color: #60a5fa;
-  color: #60c5ff;
-  background: linear-gradient(135deg, #4a5a6f 0%, #374151 100%);
-  box-shadow: 0 4px 8px rgba(96, 197, 255, 0.3), inset 0 1px 0 rgba(147, 197, 253, 0.2);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .post-card__read-more {
@@ -812,8 +810,8 @@ h6 {
   margin-top: 1rem;
 }
 
-/* 亮色主题特定样式调整 */
-.light-theme {
+/* 深色主题特定样式调整 */
+.dark-theme {
   /* 卡片悬停效果调整 */
   /* 标签样式调整 */
   /* 按钮悬停效果调整 */
@@ -826,7 +824,7 @@ h6 {
   /* About 页面 GitHub 链接调整 */
   /* 表格样式调整 */
   /* 文章页面代码块调整 */
-  /* 文章标题渐变调整 */
+  /* 文章标题（深色主题）— 使用纯色以确保对比和可读性 */
   /* 文章页面顶部装饰线调整 */
   /* Footer 链接颜色调整 */
   /* 专业度标签颜色调整 */
@@ -835,117 +833,122 @@ h6 {
   /* 导航链接下划线颜色调整 */
   /* 联系成功页面标题调整 */
 }
-.light-theme .post-card:hover {
-  border-color: rgba(30, 100, 200, 0.5);
-  box-shadow: 0 12px 30px rgba(30, 100, 200, 0.15), 0 0 40px rgba(14, 165, 233, 0.1);
+.dark-theme .post-card:hover {
+  border-color: rgba(10, 127, 255, 0.5);
+  box-shadow: 0 12px 30px rgba(10, 127, 255, 0.15), 0 0 40px rgba(59, 130, 246, 0.1);
 }
-.light-theme .tag {
+.dark-theme .tag {
   background: var(--gradient-tag);
   color: var(--color-primary);
-  border: 1px solid rgba(30, 100, 200, 0.3);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(147, 197, 253, 0.1);
 }
-.light-theme .tag:hover {
+.dark-theme .tag:hover {
+  border-color: #60a5fa;
+  color: #60c5ff;
+  background: linear-gradient(135deg, #4a5a6f 0%, #374151 100%);
+  box-shadow: 0 4px 8px rgba(96, 197, 255, 0.3), inset 0 1px 0 rgba(147, 197, 253, 0.2);
+}
+.dark-theme .theme-toggle:hover {
   border-color: var(--color-primary);
-  color: var(--color-primary-hover);
-  background: linear-gradient(135deg, #dce4ec 0%, #cbd5e1 100%);
-  box-shadow: 0 4px 8px rgba(30, 100, 200, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
-.light-theme .theme-toggle:hover {
+.dark-theme .header {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background: rgba(31, 41, 55, 0.85);
+}
+.dark-theme .hero__title {
+  filter: drop-shadow(0 0 20px rgba(139, 157, 255, 0.3));
+}
+.dark-theme .post,
+.dark-theme .about-page,
+.dark-theme .contact-page {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.dark-theme .form__input:focus,
+.dark-theme .form__textarea:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 4px 12px rgba(30, 100, 200, 0.3);
+  box-shadow: 0 0 0 3px rgba(10, 127, 255, 0.25);
 }
-.light-theme .header {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  background: rgba(240, 244, 248, 0.85);
+.dark-theme .button--primary {
+  box-shadow: 0 4px 12px rgba(10, 127, 255, 0.35);
 }
-.light-theme .hero__title {
-  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2));
+.dark-theme .button--primary:hover {
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.45);
 }
-.light-theme .post,
-.light-theme .about-page,
-.light-theme .contact-page {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-.light-theme .form__input:focus,
-.light-theme .form__textarea:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(30, 100, 200, 0.15);
-}
-.light-theme .button--primary {
-  box-shadow: 0 4px 12px rgba(30, 100, 200, 0.25);
-}
-.light-theme .button--primary:hover {
-  box-shadow: 0 6px 20px rgba(30, 100, 200, 0.35);
-}
-.light-theme .about-page__portrait {
+.dark-theme .about-page__portrait {
   border: 4px solid var(--color-primary);
-  box-shadow: 0 8px 16px rgba(30, 100, 200, 0.2);
+  box-shadow: 0 8px 16px rgba(10, 127, 255, 0.3);
 }
-.light-theme .about-page__portrait::before {
+.dark-theme .about-page__portrait::before {
   background: var(--gradient-cool);
 }
-.light-theme .github-profile-link {
+.dark-theme .github-profile-link {
   color: var(--color-primary);
 }
-.light-theme .github-profile-link:hover {
+.dark-theme .github-profile-link:hover {
   color: var(--color-primary-hover);
 }
-.light-theme .skills-table thead {
-  background-color: #f0f4f8;
+.dark-theme .skills-table thead {
+  background-color: #1a2332;
 }
-.light-theme .skills-table th,
-.light-theme .skills-table td {
+.dark-theme .skills-table th,
+.dark-theme .skills-table td {
   border-bottom: 1px solid var(--color-border);
 }
-.light-theme .table-container {
+.dark-theme .table-container {
   border: 1px solid var(--color-border);
 }
-.light-theme .post__content pre {
-  background-color: #f8fafc;
+.dark-theme .post__content pre {
+  background-color: #0d1117;
   color: var(--color-text-primary);
   border: 1px solid var(--color-border);
 }
-.light-theme .post__content code {
-  color: #1e40af;
+.dark-theme .post__content code {
+  color: #60a5fa;
 }
-.light-theme .post__content h2 {
+.dark-theme .post__content h2 {
   color: var(--color-text-primary);
   border-bottom: 1px solid var(--color-border);
 }
-.light-theme .post__title {
-  background: var(--gradient-cool);
-}
-.light-theme .post::before,
-.light-theme .about-page::before,
-.light-theme .contact-page::before {
-  opacity: 0.8;
-}
-.light-theme .footer__socials a {
-  color: var(--color-text-secondary);
-}
-.light-theme .footer__socials a:hover {
-  color: var(--color-primary);
-}
-.light-theme .proficiency--expert {
-  color: var(--color-primary);
-}
-.light-theme .proficiency--intermediate {
-  color: #0ea5e9;
-}
-.light-theme .post-card__title a {
+.dark-theme .post__title {
+  /* 取消渐变文字，以纯色显示标题 */
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
   color: var(--color-text-primary);
 }
-.light-theme .post-card__title a:hover {
-  color: var(--color-primary);
+.dark-theme .post::before,
+.dark-theme .about-page::before,
+.dark-theme .contact-page::before {
+  opacity: 1;
 }
-.light-theme .post-card__meta,
-.light-theme .post__meta {
+.dark-theme .footer__socials a {
   color: var(--color-text-secondary);
 }
-.light-theme .header__nav-link::after {
+.dark-theme .footer__socials a:hover {
+  color: var(--color-primary);
+}
+.dark-theme .proficiency--expert {
+  color: var(--color-primary);
+}
+.dark-theme .proficiency--intermediate {
+  color: #60c5ff;
+}
+.dark-theme .post-card__title a {
+  color: var(--color-text-primary);
+}
+.dark-theme .post-card__title a:hover {
+  color: var(--color-primary);
+}
+.dark-theme .post-card__meta,
+.dark-theme .post__meta {
+  color: var(--color-text-secondary);
+}
+.dark-theme .header__nav-link::after {
   background: var(--gradient-cool);
 }
-.light-theme .contact-success__title {
+.dark-theme .contact-success__title {
   color: var(--color-primary);
 }/*# sourceMappingURL=main.css.map */
