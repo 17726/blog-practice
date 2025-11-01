@@ -1,5 +1,6 @@
 /* VARIABLES */
 :root {
+  /* 深色主题变量 */
   --color-background: #111827;
   --color-surface: #1f2937;
   --color-border: #374151;
@@ -16,6 +17,25 @@
   --gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
   --gradient-bg: linear-gradient(to bottom, #111827 0%, #1a1f35 100%);
   --gradient-tag: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+}
+
+/* 科技蓝调风 - 亮色主题 */
+.light-theme {
+  --color-background: #e1e8ed;
+  --color-surface: #ffffff;
+  --color-border: #cbd5e1;
+  --color-primary: #1e64c8;
+  --color-primary-hover: #1557b0;
+  --color-text-primary: #1e3a5f;
+  --color-text-secondary: #475569;
+
+  /* 亮色主题渐变 */
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #3b82f6 100%);
+  --gradient-accent: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+  --gradient-cool: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0ea5e9 100%);
+  --gradient-warm: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  --gradient-bg: linear-gradient(to bottom, #f0f4f8 0%, #e1e8ed 100%);
+  --gradient-tag: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
 }
 
 /* BASE & RESET */
@@ -36,34 +56,13 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
 
-  background: var(--gradient-bg);
+  background: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  position: relative;
-
-  /* 添加动态背景点缀 */
-  &::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-      radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(245, 87, 108, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  > * {
-    position: relative;
-    z-index: 1;
-  }
 }
 main {
   flex: 1;
@@ -117,6 +116,7 @@ h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
 }
 
 .header__brand {
@@ -132,6 +132,12 @@ h6 {
   &:hover {
     transform: scale(1.05);
   }
+}
+
+.header__nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .header__nav-list {
@@ -167,6 +173,65 @@ h6 {
 
   .header__nav-link--active {
     color: var(--color-primary);
+  }
+}
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  &:hover {
+    border-color: var(--color-primary);
+    transform: rotate(20deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(96, 197, 255, 0.3);
+  }
+
+  &:active {
+    transform: rotate(20deg) scale(0.95);
+  }
+}
+
+.theme-toggle__icon {
+  position: absolute;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  color: var(--color-text-primary);
+  pointer-events: none;
+
+  &--sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+  }
+
+  &--moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* 亮色主题时切换图标 */
+.light-theme {
+  .theme-toggle__icon--sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .theme-toggle__icon--moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
   }
 }
 
@@ -368,9 +433,7 @@ h6 {
   padding: 1rem 0;
   border-top: 1px solid var(--color-border);
   margin-top: 4rem;
-  background: rgba(31, 41, 55, 0.5);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: var(--color-surface);
 }
 
 .footer__container {
@@ -755,4 +818,184 @@ h6 {
   color: var(--color-text-secondary);
   font-size: 1.125rem;
   margin-top: 1rem;
+}
+
+/* 亮色主题特定样式调整 */
+.light-theme {
+  /* 卡片悬停效果调整 */
+  .post-card:hover {
+    border-color: rgba(30, 100, 200, 0.5);
+    box-shadow:
+      0 12px 30px rgba(30, 100, 200, 0.15),
+      0 0 40px rgba(14, 165, 233, 0.1);
+  }
+
+  /* 标签样式调整 */
+  .tag {
+    background: var(--gradient-tag);
+    color: var(--color-primary);
+    border: 1px solid rgba(30, 100, 200, 0.3);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary-hover);
+      background: linear-gradient(135deg, #dce4ec 0%, #cbd5e1 100%);
+      box-shadow:
+        0 4px 8px rgba(30, 100, 200, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  /* 按钮悬停效果调整 */
+  .theme-toggle:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(30, 100, 200, 0.3);
+  }
+
+  /* Header 阴影调整 */
+  .header {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background: rgba(240, 244, 248, 0.85);
+  }
+
+  /* 主标题发光效果调整 */
+  .hero__title {
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2));
+  }
+
+  /* 卡片、表单等容器阴影调整 */
+  .post,
+  .about-page,
+  .contact-page {
+    box-shadow:
+      0 8px 16px rgba(0, 0, 0, 0.08),
+      0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  /* 表单输入框聚焦效果 */
+  .form__input:focus,
+  .form__textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(30, 100, 200, 0.15);
+  }
+
+  /* 按钮阴影调整 */
+  .button--primary {
+    box-shadow: 0 4px 12px rgba(30, 100, 200, 0.25);
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba(30, 100, 200, 0.35);
+    }
+  }
+
+  /* About 页面头像边框调整 */
+  .about-page__portrait {
+    border: 4px solid var(--color-primary);
+    box-shadow: 0 8px 16px rgba(30, 100, 200, 0.2);
+
+    &::before {
+      background: var(--gradient-cool);
+    }
+  }
+
+  /* About 页面 GitHub 链接调整 */
+  .github-profile-link {
+    color: var(--color-primary);
+
+    &:hover {
+      color: var(--color-primary-hover);
+    }
+  }
+
+  /* 表格样式调整 */
+  .skills-table {
+    thead {
+      background-color: #f0f4f8;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--color-border);
+    }
+  }
+
+  .table-container {
+    border: 1px solid var(--color-border);
+  }
+
+  /* 文章页面代码块调整 */
+  .post__content {
+    pre {
+      background-color: #f8fafc;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border);
+    }
+
+    code {
+      color: #1e40af;
+    }
+
+    h2 {
+      color: var(--color-text-primary);
+      border-bottom: 1px solid var(--color-border);
+    }
+  }
+
+  /* 文章标题渐变调整 */
+  .post__title {
+    background: var(--gradient-cool);
+  }
+
+  /* 文章页面顶部装饰线调整 */
+  .post::before,
+  .about-page::before,
+  .contact-page::before {
+    opacity: 0.8;
+  }
+
+  /* Footer 链接颜色调整 */
+  .footer__socials a {
+    color: var(--color-text-secondary);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  /* 专业度标签颜色调整 */
+  .proficiency--expert {
+    color: var(--color-primary);
+  }
+
+  .proficiency--intermediate {
+    color: #0ea5e9;
+  }
+
+  /* 卡片标题链接调整 */
+  .post-card__title a {
+    color: var(--color-text-primary);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  /* 文章元信息调整 */
+  .post-card__meta,
+  .post__meta {
+    color: var(--color-text-secondary);
+  }
+
+  /* 导航链接下划线颜色调整 */
+  .header__nav-link::after {
+    background: var(--gradient-cool);
+  }
+
+  /* 联系成功页面标题调整 */
+  .contact-success__title {
+    color: var(--color-primary);
+  }
 }
