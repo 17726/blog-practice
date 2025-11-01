@@ -10,9 +10,9 @@
   --font-sans: "Inter", sans-serif;
 
   /* 渐变色变量 */
-  --gradient-primary: linear-gradient(135deg, #8b9dff 0%, #a78bfa 100%);
+  --gradient-primary: linear-gradient(135deg, #8b9dff 0%, #a78bfa 50%, #8b9dff 100%);
   --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-cool: linear-gradient(135deg, #60c5ff 0%, #3dd5ff 100%);
+  --gradient-cool: linear-gradient(135deg, #60c5ff 0%, #3dd5ff 50%, #60c5ff 100%);
   --gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
   --gradient-bg: linear-gradient(to bottom, #111827 0%, #1a1f35 100%);
   --gradient-tag: linear-gradient(135deg, #334155 0%, #1e293b 100%);
@@ -183,17 +183,20 @@ h6 {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s ease infinite;
-  background-size: 200% 200%;
+  animation: gradient-shift 2s ease-in-out infinite;
+  background-size: 300% 300%;
+  filter: drop-shadow(0 0 20px rgba(139, 157, 255, 0.3));
 }
 
 @keyframes gradient-shift {
-  0%,
-  100% {
+  0% {
     background-position: 0% 50%;
   }
   50% {
     background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
